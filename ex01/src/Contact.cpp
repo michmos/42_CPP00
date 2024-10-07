@@ -1,24 +1,5 @@
 
 #include "../inc/Contact.hpp"
-#include <iostream>
-#include <string>
-
-static std::string	getInput(std::string prompt)
-{
-	std::string	input;
-	
-	while(true)
-	{
-		std::cout << prompt;
-		std::getline(std::cin, input);
-		if (input.empty())
-		{
-			std::cout << "\033[31mField cannot be empty. Please provide input\033[0m" << std::endl;
-		} else {
-			return (input);
-		}
-	}
-}
 
 void	Contact::printContact()
 {
