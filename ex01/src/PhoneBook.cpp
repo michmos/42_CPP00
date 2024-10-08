@@ -1,8 +1,15 @@
 
 #include "../inc/PhoneBook.hpp"
 
-void	PhoneBook::add(void)
-{
+PhoneBook::PhoneBook() {
+	std::cout << "New Phone Book Created\n";
+}
+
+PhoneBook::~PhoneBook() {
+	std::cout << "Phone book will be destroyed" << std::endl;
+}
+
+void	PhoneBook::add(void) {
 	Contact newContact;
 
 	newContact.setAll();
@@ -14,21 +21,11 @@ void	PhoneBook::add(void)
 	}
 }
 
-PhoneBook::PhoneBook() {
-	std::cout << "New Phone Book Created\n\n";
-}
-
-PhoneBook::~PhoneBook() {
-	std::cout << "Phone book will be destroyed" << std::endl;
-}
-
-static void	printSepeartor()
-{
+static void	printSepeartor() {
 	std::cout << "+----------+----------+----------+----------+\n";
 }
 
-static void	printCellText(const std::string &str)
-{
+static void	printCellText(const std::string &str) {
 	if (str.length() > TABLE_CELL_WIDTH)
 	{
 		std::cout << str.substr(0, TABLE_CELL_WIDTH - 1) << '.';
@@ -39,8 +36,7 @@ static void	printCellText(const std::string &str)
 	}
 }
 
-static void	printRow(Contact &contact, size_t idx)
-{
+static void	printRow(Contact &contact, size_t idx) {
 	std::cout << "|";
 	std::cout << std::setw(10) << idx;
 	std::cout << "|";
@@ -53,17 +49,16 @@ static void	printRow(Contact &contact, size_t idx)
 }
 
 
-void	PhoneBook::printPhoneBook()
-{
+void	PhoneBook::printPhoneBook() {
 	// print header
-	SET_COLOR2BLUE;
+	std::cout << BLUE << BOLD;
 	printSepeartor();
 	std::cout << "|" << std::setw(10) << "Idx" << '|';
 	std::cout << std::setw(10) << "First" << '|';
 	std::cout << std::setw(10) << "Last" << '|';
 	std::cout << std::setw(10) << "Nick" << "|\n";
 	printSepeartor();
-	RESET_COLOR;
+	std::cout << RESET;
 	// print contacts
 	for (int i=0; i < mNumContacts; i++) {
 		printRow(mContacts[i], i);
@@ -72,30 +67,31 @@ void	PhoneBook::printPhoneBook()
 	std::cout << std::flush;
 }
 
-void	PhoneBook::search(void)
-{
+void	PhoneBook::search(void) {
 	std::string	inputStr;
 	u_int8_t	idx;
 
+	if (mNumContacts == 0)
+	{
+		std::cerr << RED << "No contacts added so far. Please add a contact before using SEARCH" << RESET << std::endl;
+		return ;
+	}
 	printPhoneBook();
 	while (true)
 	{
 		inputStr = getInput("Enter contact index: ");
 		idx = inputStr[0] - '0';
-		if (inputStr.length() > 1 || idx < 0 || idx > 9 || idx > mNumContacts - 1)
-		{
-			std::cout << "\033[31mUnvalid index. Please provide an existing index\033[0m" << std::endl;
-		}
-		else
-		{
+		if (inputStr.length() > 1 || idx < 0 || idx > 9 || idx > mNumContacts - 1) {
+			std::cerr << RED << "Invalid index. Please provide an index between 0 and " << mContactsIdx - 1 << RESET << std::endl;
+		} else {
 			break ;
 		}
 	}
+	std::cout << "\n";
 	mContacts[idx].printContact();
 }
 
-void	PhoneBook::exit(void)
-{
+void	PhoneBook::exit(void) {
 	::exit(0);
 }
 

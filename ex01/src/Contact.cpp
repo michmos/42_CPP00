@@ -3,11 +3,12 @@
 
 void	Contact::printContact()
 {
-	std::cout << "First Name: " << firstName << std::endl;
-	std::cout << "Last Name: " << lastName << std::endl;
-	std::cout << "Nick Name: " << nickName << std::endl;
-	std::cout << "Phone Number: " << phoneNum << std::endl;
-	std::cout << "Secret: " << secret << std::endl;
+	std::cout << "First Name: " << firstName << "\n";
+	std::cout << "Last Name: " << lastName << "\n";
+	std::cout << "Nick Name: " << nickName << "\n";
+	std::cout << "Phone Number: " << phoneNum << "\n";
+	std::cout << "Secret: " << secret << "\n";
+	std::cout << std::flush;
 }
 
 void	Contact::setFirst()

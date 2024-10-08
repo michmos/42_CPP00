@@ -2,8 +2,8 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <string>
-#include <iostream>
+# include <string>
+# include "utils.hpp"
 
 class	Contact {
 
