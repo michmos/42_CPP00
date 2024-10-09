@@ -28,7 +28,7 @@ public:
 	std::string	getNum() const;
 	std::string	getSecret() const;
 
-	void	printContact();
+	void	printContact() const;
 };
 
 #endif

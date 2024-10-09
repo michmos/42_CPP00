@@ -20,10 +20,9 @@ public:
 	~PhoneBook();
 
 	void	add();
-	void	search();
-	void	exit();
+	void	search() const;
 
-	void	printPhoneBook();
+	void	printPhoneBook() const;
 };
 
 #endif

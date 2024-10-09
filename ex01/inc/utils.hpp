@@ -13,6 +13,6 @@
 #define CYAN        "\033[36m"
 #define BOLD 		"\033[1m"
 
-std::string	getInput(const std::string prompt);
+std::string	getInput(const std::string &prompt);
 
 #endif

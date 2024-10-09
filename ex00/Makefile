@@ -13,6 +13,11 @@ CC		:= c++
 CFLAGS	:= -Wall -Werror -Wextra -Wpedantic -std=c++11
 RM		:= rm -rf
 
+DEBUG	?= 1
+ifeq ($(DEBUG),1)
+DFLAGS	:= -g -fsanitize=address
+endif
+
 all: $(NAME)
 
 $(NAME): $(OBJS)

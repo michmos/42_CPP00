@@ -1,13 +1,13 @@
 
 #include "../inc/Contact.hpp"
 
-void	Contact::printContact()
+void	Contact::printContact() const
 {
-	std::cout << "First Name: " << firstName << "\n";
-	std::cout << "Last Name: " << lastName << "\n";
-	std::cout << "Nick Name: " << nickName << "\n";
-	std::cout << "Phone Number: " << phoneNum << "\n";
-	std::cout << "Secret: " << secret << "\n";
+	std::cout << BLUE << "First Name: " << RESET << firstName << "\n";
+	std::cout << BLUE << "Last Name: " << RESET << lastName << "\n";
+	std::cout << BLUE << "Nick Name: " << RESET << nickName << "\n";
+	std::cout << BLUE << "Phone Number: " << RESET << phoneNum << "\n";
+	std::cout << BLUE << "Secret: " << RESET << secret << "\n";
 	std::cout << std::flush;
 }
 
