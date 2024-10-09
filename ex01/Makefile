@@ -1,16 +1,15 @@
 
-NAME	:= megaphone
+NAME	:= phonebook
 
 SRC_DIR	:= src
-SRCS	:= megaphone.cpp
+SRCS	:= Contact.cpp PhoneBook.cpp main.cpp utils.cpp
 SRCS	:= $(SRCS:%=$(SRC_DIR)/%)
 
 OBJ_DIR	:= .build
 OBJS	:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-
 CC		:= c++
-CFLAGS	:= -Wall -Werror -Wextra -Wpedantic -std=c++11
+CFLAGS	:= -Wall -Werror -Wextra -Wpedantic -Wunreachable-code -Wuninitialized -std=c++11
 RM		:= rm -rf
 
 DEBUG	?= 1
@@ -21,12 +20,12 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $@
+	$(CC) $(OBJS) $(DFLAGS) -o $(NAME)
 	@printf "$(CREATED)" $@ $(CUR_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ_DIR)
