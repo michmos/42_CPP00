@@ -1,9 +1,8 @@
 
 #include "../inc/PhoneBook.hpp"
-#include <cstddef>
 
 PhoneBook::PhoneBook() {
-	std::cout << "New Phone Book Created" << std::endl;
+	std::cout << BLUE << "New phone book created. Use one of the following cmds ADD SEARCH EXIT" << RESET << std::endl;
 }
 
 PhoneBook::~PhoneBook() {
@@ -14,12 +13,11 @@ void	PhoneBook::add(void) {
 	Contact newContact;
 
 	newContact.setAll();
-	mContacts[mContactsIdx] = newContact;
-	// update idx
-	mContactsIdx = (mContactsIdx + 1) % MAX_CONTACTS;
-	if (mNumContacts < MAX_CONTACTS)
+	_Contacts[_ContactsIdx] = newContact;
+	_ContactsIdx = (_ContactsIdx + 1) % MAX_CONTACTS;
+	if (_NumContacts < MAX_CONTACTS)
 	{
-		mNumContacts++;
+		_NumContacts++;
 	}
 }
 
@@ -47,7 +45,6 @@ static void	printRow(const Contact &contact, size_t idx) {
 	std::cout << "|\n";
 }
 
-
 void	PhoneBook::printPhoneBook() const {
 	// print header
 	std::cout << BLUE << BOLD;
@@ -59,36 +56,58 @@ void	PhoneBook::printPhoneBook() const {
 	printSepeartor();
 	std::cout << RESET;
 	// print contacts
-	for (size_t i=0; i < mNumContacts; i++) {
-		printRow(mContacts[i], i);
+	for (size_t i=0; i < _NumContacts; i++) {
+		printRow(_Contacts[i], i);
 		printSepeartor();
 	}
 	std::cout << std::flush;
 }
 
-void	PhoneBook::search(void) const {
+static int	getContactIdx(int numContacts)
+{
+	bool		bad_input;
 	std::string	userInput;
 	u_int8_t	idx;
 
-	if (mNumContacts == 0) {
+	while (true)
+	{
+		bad_input = false;
+		userInput = getInput("Enter contact index or q to go back: ");
+		if (userInput == "q") {
+			return (-1);
+		}
+
+		try {
+			idx = std::stoi(userInput);
+			if (userInput.length() > 1 || idx > numContacts - 1) {
+				bad_input = true;
+			}
+		} catch (...) {
+			bad_input = true;
+		}
+
+		if (bad_input) {
+			std::cerr << RED << "Invalid index. Please provide an index between 0 and " << numContacts - 1 << RESET << std::endl;
+		} else {
+			return (idx);
+		}
+	}
+
+}
+
+void	PhoneBook::search(void) const {
+	int	idx;
+
+	if (_NumContacts == 0) {
 		std::cerr << RED << "No contacts added so far. Please add a contact before using SEARCH" << RESET << std::endl;
 		return ;
 	}
 	printPhoneBook();
-	while (true)
-	{
-		userInput = getInput("Enter contact index or q to go back: ");
-		if (userInput == "q") {
-			return ;
-		}
-		idx = std::stoi(userInput);
-		if (userInput.length() > 1 || idx < 0 || idx > mNumContacts - 1) {
-			std::cerr << RED << "Invalid index. Please provide an index between 0 and " << mNumContacts - 1 << RESET << std::endl;
-		} else {
-			break ;
-		}
-	}
+	idx = getContactIdx(_NumContacts);
+	// search can be quit with q, resulting in -1
+	if (idx == -1)
+		return ;
 	std::cout << "\n";
-	mContacts[idx].printContact();
+	_Contacts[idx].printContact();
 }
 

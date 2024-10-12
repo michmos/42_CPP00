@@ -2,17 +2,16 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include <string>
 # include "utils.hpp"
 
 class	Contact {
 
 private:
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickName;
-	std::string	phoneNum;
-	std::string	secret;
+	std::string	_firstName;
+	std::string	_lastName;
+	std::string	_nickName;
+	std::string	_phoneNum;
+	std::string	_secret;
 
 public:
 	void	setAll();

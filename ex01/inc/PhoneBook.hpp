@@ -3,6 +3,7 @@
 
 # include "Contact.hpp"
 # include "utils.hpp"
+# include <iomanip>
 
 # define MAX_CONTACTS 8
 # define TABLE_CELL_WIDTH 10
@@ -11,9 +12,9 @@
 class	PhoneBook {
 
 private:
-	Contact	mContacts[MAX_CONTACTS];
-	size_t	mContactsIdx = 0;
-	size_t	mNumContacts = 0;
+	Contact	_Contacts[MAX_CONTACTS];
+	size_t	_ContactsIdx = 0;
+	size_t	_NumContacts = 0;
 
 public:
 	PhoneBook();

@@ -3,37 +3,37 @@
 
 void	Contact::printContact() const
 {
-	std::cout << BLUE << "First Name: " << RESET << firstName << "\n";
-	std::cout << BLUE << "Last Name: " << RESET << lastName << "\n";
-	std::cout << BLUE << "Nick Name: " << RESET << nickName << "\n";
-	std::cout << BLUE << "Phone Number: " << RESET << phoneNum << "\n";
-	std::cout << BLUE << "Secret: " << RESET << secret << "\n";
+	std::cout << BLUE << "First Name: " << RESET << _firstName << "\n";
+	std::cout << BLUE << "Last Name: " << RESET << _lastName << "\n";
+	std::cout << BLUE << "Nick Name: " << RESET << _nickName << "\n";
+	std::cout << BLUE << "Phone Number: " << RESET << _phoneNum << "\n";
+	std::cout << BLUE << "Secret: " << RESET << _secret << "\n";
 	std::cout << std::flush;
 }
 
 void	Contact::setFirst()
 {
-	firstName = getInput("First Name: ");
+	_firstName = getInput("First Name: ");
 }
 
 void	Contact::setLast()
 {
-	lastName = getInput("Last Name: ");
+	_lastName = getInput("Last Name: ");
 }
 
 void	Contact::setNick()
 {
-	nickName = getInput("Nick Name: ");
+	_nickName = getInput("Nick Name: ");
 }
 
 void	Contact::setNum()
 {
-	phoneNum = getInput("Phone Number: ");
+	_phoneNum = getInput("Phone Number: ");
 }
 
 void	Contact::setSecret()
 {
-	secret = getInput("Darkest Secret: ");
+	_secret = getInput("Darkest Secret: ");
 }
 
 void	Contact::setAll()
@@ -47,26 +47,26 @@ void	Contact::setAll()
 
 std::string	Contact::getFirst() const
 {
-	return(firstName);
+	return(_firstName);
 }
 
 std::string	Contact::getLast() const
 {
-	return(lastName);
+	return(_lastName);
 }
 
 std::string	Contact::getNick() const
 {
-	return(nickName);
+	return(_nickName);
 }
 
 std::string	Contact::getNum() const
 {
-	return(phoneNum);
+	return(_phoneNum);
 }
 
 std::string	Contact::getSecret() const
 {
-	return(secret);
+	return(_secret);
 }
 

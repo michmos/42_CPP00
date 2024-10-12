@@ -2,8 +2,9 @@
 #ifndef UTILS_HPP
 # define UTILS_HPP
 
-# include <iomanip>
 # include <iostream>
+#include <cstddef>
+#include <limits>
 
 #define RESET       "\033[0m"
 #define RED         "\033[31m"

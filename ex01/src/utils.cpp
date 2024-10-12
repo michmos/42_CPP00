@@ -1,8 +1,5 @@
 
 #include "../inc/utils.hpp"
-#include <cstdlib>
-#include <ios>
-#include <limits>
 
 std::string	getInput(const std::string &prompt)
 {
