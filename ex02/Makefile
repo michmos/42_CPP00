@@ -8,7 +8,7 @@ OBJ_DIR	:= .build
 OBJS	:= $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 CC		:= c++
-CFLAGS	:= -Wall -Werror -Wextra -Wpedantic -Wuninitialized -Wunreachable-code -Wuninitialized -std=c++11
+CFLAGS	:= -Wall -Werror -Wextra -Wpedantic -Wuninitialized -Wunreachable-code -Wuninitialized -std=c++98
 RM		:= rm -rf
 
 DEBUG	?= 1
